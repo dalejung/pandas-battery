@@ -9,7 +9,7 @@ from pandas_battery.tools.attrdict import attrdict
 
 __all__ = ['frame_targets']
 
-N = 10
+N = 10000
 COLS = 5
 FLAT_N = N * COLS
 shape = (N, COLS)
@@ -18,8 +18,8 @@ data_types = OrderedDict()
 data_types['int'] = range(N)
 data_types['float'] = np.random.randn(N)
 data_types['bool'] = np.random.randn(N) > 0
-data_types['string'] = list('asdfqwerzx')
-data_types['long_strings'] = np.array([tm.rands(10) for x in range(FLAT_N)]).reshape(shape)
+data_types['string'] = np.array([tm.rands(1) for x in range(FLAT_N)]).reshape(shape)
+data_types['long_strings'] = np.array([tm.rands(30) for x in range(FLAT_N)]).reshape(shape)
 
 indexes = OrderedDict()
 indexes[''] = None
