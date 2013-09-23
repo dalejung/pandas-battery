@@ -1,5 +1,6 @@
 from pandas_battery.target.series import series_targets
 from pandas_battery.target.frame import frame_targets
+from pandas_battery.target.panel import panel_targets
 from pandas_battery.tools.attrdict import attrdict
 
 def merge_dict(*dicts):
@@ -11,4 +12,4 @@ def merge_dict(*dicts):
             results[k] = v
     return results
 
-all_targets = merge_dict(series_targets, frame_targets)
+all_targets = merge_dict(series_targets, frame_targets, panel_targets)

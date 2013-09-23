@@ -28,13 +28,14 @@ indexes['period'] = pd.period_range(start="2000", freq="D", periods=N)
 
 column_types = OrderedDict()
 column_types[''] = None
-column_types['sidx'] = [tm.rands(10) for x in range(COLS)]
+column_types['strcol'] = [tm.rands(10) for x in range(COLS)]
 
 target_args = itertools.product(data_types, indexes, column_types)
 
 def maker(data, index, columns):
     def _maker():
         arr = np.array(data)
+        # repeat the data for each column
         if arr.ndim == 1:
             arr = np.repeat(arr.ravel(), COLS).reshape(shape)
         return pd.DataFrame(arr, index=index, columns=columns)
